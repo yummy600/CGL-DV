@@ -1,0 +1,16 @@
+# Experiment config for Cora dataset
+
+data:
+  dataset: "cora"
+  num_neighbors: 2
+
+model:
+  hidden_dim: 256
+  num_layers: 3
+
+training:
+  epochs: 100
+  learning_rate: 1e-5
+
+cgp:
+  num_layers: 3  # Optimal for Cora

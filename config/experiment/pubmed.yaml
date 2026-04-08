@@ -1,0 +1,17 @@
+# Experiment config for PubMed dataset
+
+data:
+  dataset: "pubmed"
+  num_neighbors: 2
+
+model:
+  hidden_dim: 256
+  num_layers: 3
+
+training:
+  epochs: 100
+  learning_rate: 1e-5
+  batch_size: 512  # Larger batch for larger dataset
+
+cgp:
+  num_layers: 3  # Optimal for PubMed

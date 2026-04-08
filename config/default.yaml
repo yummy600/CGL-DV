@@ -1,0 +1,74 @@
+# CGL-DV Configuration File
+
+# Data settings
+data:
+  dataset: "cora"  # Options: cora, citeseer, pubmed
+  data_dir: "./data"
+  num_neighbors: 2  # Top-k similar neighbors for prompt construction
+  train_ratio: 0.6
+  val_ratio: 0.2
+  test_ratio: 0.2
+
+# Model settings
+model:
+  name: "CGL-DV"
+  hidden_dim: 256
+  num_layers: 3  # Propagation layers (optimal: 3 for Cora/PubMed, 4 for Citeseer)
+  dropout: 0.5
+  temperature: 0.07  # Contrastive learning temperature
+
+# CSA (Confidence-guided Semantic Augmentation) settings
+csa:
+  llm_model: "meta-llama/Llama-3.1-8B"  # LLM model for generation
+  embedding_model: "roberta-base"  # Base language model for embeddings
+  embedding_dim: 768
+  prompt_template: "default"  # Prompt template type
+  use_ollama: true  # Use Ollama for local LLM inference
+  ollama_url: "http://localhost:11434"
+
+# DCF (Dual-view Contrastive Fusion) settings
+dcf:
+  contrastive_loss: "supervised"  # supervised or unsupervised
+  feature_dropout: 0.2
+  edge_dropout: 0.1
+  use_graphcl: true  # Use GraphCL augmentation
+  fusion_type: "prototype"  # prototype or attention
+
+# CGP (Confidence-guided Propagation) settings
+cgp:
+  adaptive_aggregation: true
+  use_confidence_edges: true
+  confidence_decay: 1.0  # Decay rate for edge weights
+
+# Training settings
+training:
+  epochs: 100
+  batch_size: 256
+  learning_rate: 1e-5
+  weight_decay: 1e-4
+  momentum: 0.99
+  warmup_epochs: 50
+  early_stopping_patience: 20
+  device: "cuda"  # cuda or cpu
+  num_workers: 4
+
+# LLM generation settings
+llm:
+  max_tokens: 256
+  temperature: 0.7
+  top_p: 0.9
+  cache_dir: "./cache"
+  use_cache: true  # Cache LLM outputs for reuse
+
+# Evaluation settings
+evaluation:
+  metrics: [ "accuracy", "f1", "precision", "recall" ]
+  save_visualization: true
+  visualization_dir: "./visualizations"
+
+# Logging settings
+logging:
+  log_dir: "./logs"
+  log_interval: 10
+  save_checkpoint: true
+  checkpoint_dir: "./checkpoints"
