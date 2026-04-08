@@ -94,7 +94,6 @@ dmypy.json
 *~
 
 # Data
-data/
 checkpoints/
 logs/
 visualizations/
