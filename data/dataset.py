@@ -19,7 +19,7 @@ class CitationDataset:
 
         # Load dataset using PyTorch Geometric
         self.dataset = Planetoid(
-                root = os.path.join( root, "Planetoid" ),
+                root = root,
                 name = name,
                 transform = NormalizeFeatures()
         )
