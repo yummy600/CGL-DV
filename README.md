@@ -20,7 +20,7 @@
 
 ```bash
 # Clone the repository
-git clone git@github.com:yummy600/CGL-DV.git
+git clone https://github.com/yummy600/CGL-DV.git
 cd CGL-DV
 
 # Create conda environment
